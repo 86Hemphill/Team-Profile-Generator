@@ -43,8 +43,10 @@ async function init() {
           name: "github",
         },
       ]);
+      
       const engineer = new Engineer(q.name, q.id, q.email, engQuestions.github);
       employees.unshift(engineer);
+
     } else if (q.role.toLowerCase() === "intern") {
       let intQuestions = await inquirer.prompt([
         {
@@ -53,8 +55,10 @@ async function init() {
           name: "school",
         },
       ]);
+
       const intern = new Intern(q.name, q.id, q.email, intQuestions.school);
       employees.unshift(intern);
+
     } else if (q.role.toLowerCase() === "manager") {
       let manQuestions = await inquirer.prompt([
         {
@@ -63,6 +67,7 @@ async function init() {
           name: "officeNumber",
         },
       ]);
+
       const manager = new Manager(
         q.name,
         q.id,
@@ -92,13 +97,7 @@ async function init() {
     
   } catch (err) {
     console.log(err);
-  }
-}
+  };
+};
 
 init();
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
