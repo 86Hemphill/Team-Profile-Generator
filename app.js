@@ -44,7 +44,7 @@ async function init() {
         },
       ]);
       const engineer = new Engineer(q.name, q.id, q.email, engQuestions.github);
-      employees.push(engineer);
+      employees.unshift(engineer);
     } else if (q.role.toLowerCase() === "intern") {
       let intQuestions = await inquirer.prompt([
         {
@@ -54,7 +54,7 @@ async function init() {
         },
       ]);
       const intern = new Intern(q.name, q.id, q.email, intQuestions.school);
-      employees.push(intern);
+      employees.unshift(intern);
     } else if (q.role.toLowerCase() === "manager") {
       let manQuestions = await inquirer.prompt([
         {
@@ -69,7 +69,7 @@ async function init() {
         q.email,
         manQuestions.officeNumber
       );
-      employees.push(manager);
+      employees.unshift(manager);
     }
 
     let addAnother = await inquirer.prompt({
@@ -86,7 +86,7 @@ async function init() {
 
     console.log(employees);
     const team = render(employees);
-    fs.writeFile(filename, team, function () {
+    fs.writeFile(outputPath, team, function () {
       console.log("Successfully generated team profile page!");
     });
     
